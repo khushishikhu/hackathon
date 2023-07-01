@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import {signIn,signOut, useSession} from "next-auth/react";
 import Homepage from './Homepage';
+import Navbar from '../components/Navbar';
 
 
 
@@ -14,7 +15,8 @@ export default function Home() {
 
   return (
 
-    <Homepage></Homepage>
+    // <Homepage></Homepage>
+    <Navbar></Navbar>
 
     // <div className={styles.container}>
     //   <Head>
