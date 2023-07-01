@@ -1,7 +1,10 @@
 import { useState,useEffect } from "react";
 import { useSession } from "next-auth/react";
+import PostCard from "../components/Postcard";
+import styles from '../styles/Home.module.css';
+import dynamic from "next/dynamic";
 
-export default function Secret(){
+function Secret({posts}){
     const{data: session,status}= useSession();
     const loading = status === "loading"
     const[content,setContent]= useState();
@@ -33,11 +36,39 @@ export default function Secret(){
         <main>
             <div>
                 <h1>Protected Pages</h1>
-                <p>
-                    {content}
-                </p>
+                
             </div>
+            <div className={styles.container}>
+                    {posts.length === 0 ? (
+                        <h2>No added posts</h2>
+                    ) : (
+                        <ul>
+                            {posts.map((post, i) => (
+                                <PostCard post={post} key={i} />
+                            ))}
+                        </ul>
+                    )}
+                </div>
         </main>
     )
 
 }
+
+export async function getServerSideProps(ctx) {
+    // get the current environment
+    let dev = process.env.NODE_ENV !== 'production';
+    let { DEV_URL, PROD_URL } = process.env;
+
+    // request posts from api
+    let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/posts/posts`);
+    // extract the data
+    let data = await response.json();
+
+    return {
+        props: {
+            posts: data['message'],
+        },
+    };
+}
+
+export default dynamic(() => Promise.resolve(Secret), {ssr: false,});
