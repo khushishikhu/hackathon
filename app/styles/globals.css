@@ -6,6 +6,28 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.home {
+  min-height: 100vh;
+  height: 100%;
+  background-image: url('../public/dog.jpg');
+  background-size: cover;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0.7)),
+  url('../public/dog.jpg');
+}
+
+.home-bg {
+  height: inherit;
+  color: aliceblue;
+  padding: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-content {
+  margin-top: 10rem;
+  width: 40%;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -35,4 +57,12 @@ ul {
 button {
   padding: 0.5rem 1rem;
   font-weight: bold;
+  /* text-transform: capitalize; */
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-bottom: 10px;
 }
