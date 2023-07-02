@@ -7,6 +7,9 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Box from '@mui/material/Box';
+
 
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
@@ -50,7 +53,25 @@ export default function EnableColorOnDarkAppBar() {
           {!session && (
             <>
               You are Not signed in <br></br>
-              <Button color="inherit" onClick={signIn}>Sign In</Button>
+              <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        '& > *': {
+          m: 1,
+        },
+      }}
+    >
+
+              <ButtonGroup variant="outlined" aria-label="outlined button group">
+  <Button onClick={signIn}>Sign In as a Finder</Button>
+  <Button onClick={signIn}>Sign In as a Helper</Button>
+</ButtonGroup>
+</Box>
+
+              {/* <Button color="inherit" onClick={signIn}>Sign In as a Finder</Button>
+              <Button color="inherit" onClick={signIn}>Sign In as a Helper</Button> */}
             </>
           )}
           {

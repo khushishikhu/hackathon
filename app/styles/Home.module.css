@@ -1,5 +1,5 @@
 .container {
-  min-height: 100vh;
+  min-height: 10vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
@@ -88,4 +88,10 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.cardcontainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
