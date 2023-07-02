@@ -51,28 +51,28 @@ export default function EnableColorOnDarkAppBar() {
           {appBarLabel('HooDog')}
 
           {!session && (
-            <>
-              You are Not signed in <br></br>
+            <div className='nav-items'>
+              You are Not signed in
               <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        '& > *': {
-          m: 1,
-        },
-      }}
-    >
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  '& > *': {
+                    m: 1,
+                  },
+                }}
+              >
 
-              <ButtonGroup variant="outlined" aria-label="outlined button group">
-  <Button onClick={signIn}>Sign In as a Finder</Button>
-  <Button onClick={signIn}>Sign In as a Helper</Button>
-</ButtonGroup>
-</Box>
+                <ButtonGroup variant="outlined" aria-label="outlined button group">
+                  <Button color='inherit' onClick={signIn}>Sign In as a Finder</Button>
+                  <Button color='inherit' onClick={signIn}>Sign In as a Helper</Button>
+                </ButtonGroup>
+              </Box>
 
               {/* <Button color="inherit" onClick={signIn}>Sign In as a Finder</Button>
               <Button color="inherit" onClick={signIn}>Sign In as a Helper</Button> */}
-            </>
+            </div>
           )}
           {
             session && (
@@ -82,7 +82,6 @@ export default function EnableColorOnDarkAppBar() {
                   <Button color="inherit">
                     <Link href="/secret"> Homepage</Link>
                   </Button>
-                  {/* <Button color="inherit" color="inherit">Login</Button> */}
                   <Button color="inherit" onClick={signOut}> SignOut</Button>
                 </div>
               </div>
