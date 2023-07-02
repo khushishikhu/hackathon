@@ -1,9 +1,4 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import React from 'react';
-import Link from 'next/link';
-import { signIn, signOut, useSession } from "next-auth/react";
-import Homepage from './Homepage';
 import Navbar from '../components/Navbar';
 import { Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material';
@@ -11,8 +6,6 @@ import { createTheme, ThemeProvider } from '@mui/material';
 
 export default function Home() {
 
-  // const { data: session, status } = useSession()
-  // const loading = status === "loading"
   const theme = createTheme({
     typography: {
       fontFamily: [
@@ -36,7 +29,6 @@ export default function Home() {
             the location and condition of a nearby stray, and another who can provide information
             and arrange shelter 🏠 and food 🍞 for them.
           </Typography>
-          {/* <img src='dog.jpg' /> */}
         </div>
       </div>
     </ThemeProvider>

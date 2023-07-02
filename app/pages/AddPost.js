@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import styles from './Post.module.css';
-import Link from 'next/link';
 import Navbar from '../components/Navbar';
-
 
 export default function AddPost() {
 
@@ -86,9 +84,9 @@ export default function AddPost() {
                         />
                     </div>
                     <div className={styles.formItem}>
-                    
+
                         <button type="submit">Add post</button>
-                        
+
                     </div>
                 </form>
             </div>

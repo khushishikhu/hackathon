@@ -3,8 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -19,9 +17,6 @@ import { signIn, signOut, useSession } from "next-auth/react";
 function appBarLabel(label) {
   return (
     <Toolbar>
-      {/* <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-        <MenuIcon />
-      </IconButton> */}
       <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
         {label}
       </Typography>
@@ -63,15 +58,11 @@ export default function EnableColorOnDarkAppBar() {
                   },
                 }}
               >
-
                 <ButtonGroup variant="outlined" aria-label="outlined button group">
                   <Button color='inherit' onClick={signIn}>Sign In as a Finder</Button>
                   <Button color='inherit' onClick={signIn}>Sign In as a Helper</Button>
                 </ButtonGroup>
               </Box>
-
-              {/* <Button color="inherit" onClick={signIn}>Sign In as a Finder</Button>
-              <Button color="inherit" onClick={signIn}>Sign In as a Helper</Button> */}
             </div>
           )}
           {
