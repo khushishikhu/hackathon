@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './Post.module.css';
 import Link from 'next/link';
+import Navbar from '../components/Navbar';
 
 
 export default function AddPost() {
@@ -51,7 +52,7 @@ export default function AddPost() {
 
     return (
         <div>
-            
+            <Navbar />
             <div className={styles.container}>
                 <form onSubmit={handlePost} className={styles.form}>
                     {error ? (
