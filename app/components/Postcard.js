@@ -23,7 +23,7 @@ export default function PostCard({ post }) {
 
         try {
             // Update post
-            await fetch('/api/posts', {
+            await fetch('/api/posts/posts', {
                 method: 'PUT',
                 body: postId,
             });
@@ -45,7 +45,7 @@ export default function PostCard({ post }) {
 
         try {
             // Delete post
-            await fetch('/api/posts', {
+            await fetch('/api/posts/posts', {
                 method: 'DELETE',
                 body: postId,
             });
@@ -63,7 +63,7 @@ export default function PostCard({ post }) {
 
     return (
         <>
-        <Grid container spacing={2}>
+
         <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
@@ -79,34 +79,27 @@ export default function PostCard({ post }) {
           <Typography variant="body2" color="text.secondary">
             {post.content}
           </Typography>
+          <Typography variant="body2" color="text.secondary">
+          <small>{new Date(post.createdAt).toLocaleDateString()}</small>
+          </Typography>
+          
         </CardContent>
+        
         <CardContent>
+
         {!post.published ? (
                     <Button variant="contained" color="success" type="button" onClick={() => publishPost(post._id)}>
                     {publishing ? 'Publishing' : 'Publish'}
                   </Button>
                 ) : null}
         <Button variant="outlined" color="error" type="button" onClick={() => deletePost(post['_id'])}>
-                    {deleting ? 'Deleting' : 'Delete'}
+                    {deleting ? 'Adopting' : 'Adopt'}
         </Button>
      
         </CardContent>
-        <small>{new Date(post.createdAt).toLocaleDateString()}</small>
+        
       </CardActionArea>
     </Card>
-    </Grid>
-            {/* <li>
-                <h3>{post.title}</h3>
-                <p>{post.content}</p>
-                <small>{new Date(post.createdAt).toLocaleDateString()}</small>
-                <br />
-                    <button type="button">
-                        {'Publish'}
-                    </button>
-                <button type="button" >
-                    {'Delete'}
-                </button>
-            </li> */}
         </>
     );
 }

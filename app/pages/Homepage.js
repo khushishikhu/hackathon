@@ -19,7 +19,7 @@ export default function Homepage(){
           {!session && (
             <>
             Not signed in <br></br>
-            <button onClick={signIn}>Sign In</button>
+            <button onClick={signIn}>Sign In as a Finder</button>
             </>
           )}
           {

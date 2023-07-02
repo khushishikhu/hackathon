@@ -1,6 +1,6 @@
 import { useState } from 'react';
-
 import styles from './Post.module.css';
+import Link from 'next/link';
 
 
 export default function AddPost() {
@@ -64,7 +64,7 @@ export default function AddPost() {
                             <h3 className={styles.message}>{message}</h3>
                         </div>
                     ) : null}
-                    
+
                     <div className={styles.formItem}>
                         <label>Where & When</label>
                         <input
@@ -85,7 +85,9 @@ export default function AddPost() {
                         />
                     </div>
                     <div className={styles.formItem}>
+                    
                         <button type="submit">Add post</button>
+                        
                     </div>
                 </form>
             </div>
