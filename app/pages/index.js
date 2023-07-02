@@ -3,7 +3,6 @@ import styles from '../styles/Home.module.css';
 import React from 'react';
 import Link from 'next/link';
 import { signIn, signOut, useSession } from "next-auth/react";
-import Homepage from './Homepage';
 import Navbar from '../components/Navbar';
 import { Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material';
@@ -25,7 +24,7 @@ export default function Home() {
   return (
     <ThemeProvider theme={theme}>
       <div className='home'>
-        <Navbar></Navbar>
+        <Navbar />
         <div className='home-bg'>
           <Typography
             variant='h4'
@@ -36,7 +35,6 @@ export default function Home() {
             the location and condition of a nearby stray, and another who can provide information
             and arrange shelter 🏠 and food 🍞 for them.
           </Typography>
-          {/* <img src='dog.jpg' /> */}
         </div>
       </div>
     </ThemeProvider>

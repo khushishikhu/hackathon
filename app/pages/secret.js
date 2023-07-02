@@ -1,30 +1,31 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import PostCard from "../components/Postcard";
 import styles from '../styles/Home.module.css';
 import dynamic from "next/dynamic";
+import Navbar from '../components/Navbar';
 
-function Secret({posts}){
-    const{data: session,status}= useSession();
+function Secret({ posts }) {
+    const { data: session, status } = useSession();
     const loading = status === "loading"
-    const[content,setContent]= useState();
+    const [content, setContent] = useState();
 
 
-    useEffect(()=>{
-        const fetchData = async()=>{
+    useEffect(() => {
+        const fetchData = async () => {
             const res = await fetch("/api/secret");
             const json = await res.json();
-            if(json.content){
+            if (json.content) {
                 setContent(json.content)
             }
         }
         fetchData();
-    },[session])
+    }, [session])
 
-    if(typeof window !== "undefined" && loading) return null;
+    if (typeof window !== "undefined" && loading) return null;
 
-    if(!session){
-        return(
+    if (!session) {
+        return (
             <main>
                 <div>
                     <h1>You aren't sign in. Please signed in first</h1>
@@ -32,23 +33,27 @@ function Secret({posts}){
             </main>
         )
     }
-    return(
+    return (
         <main>
-            <div>
-                <h1>Protected Pages</h1>
-                
+            <Navbar />
+            <div className='' >
+                {posts.length === 0 ? (
+                    <h2>No added posts</h2>
+                ) : (
+                    <div className="card-container">
+                        {/* {posts.map((post, i) => (
+                            <PostCard post={post} key={i} />
+                        ))} */}
+                        <PostCard />
+                        <PostCard />
+                        <PostCard />
+                        <PostCard />
+                        <PostCard />
+                        <PostCard />
+                        <PostCard />
+                    </div>
+                )}
             </div>
-            <div className={styles.container}>
-                    {posts.length === 0 ? (
-                        <h2>No added posts</h2>
-                    ) : (
-                        <ul>
-                            {posts.map((post, i) => (
-                                <PostCard post={post} key={i} />
-                            ))}
-                        </ul>
-                    )}
-                </div>
         </main>
     )
 
@@ -71,4 +76,4 @@ export async function getServerSideProps(ctx) {
     };
 }
 
-export default dynamic(() => Promise.resolve(Secret), {ssr: false,});
+export default dynamic(() => Promise.resolve(Secret), { ssr: false, });
